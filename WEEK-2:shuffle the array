@@ -1,0 +1,15 @@
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] result = new int[2 * n];
+        int left = 0;        // pointer for x elements
+        int right = n;       // pointer for y elements
+        int index = 0;       // index for result array
+
+        for (int i = 0; i < n; i++) {
+            result[index++] = nums[left++];   // take x_i
+            result[index++] = nums[right++];  // take y_i
+        }
+
+        return result;
+    }
+}
