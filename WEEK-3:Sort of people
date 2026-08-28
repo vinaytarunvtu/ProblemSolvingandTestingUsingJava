@@ -1,0 +1,33 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        int n = names.length;
+        
+        // Create an array of indices to track the original positions
+        Integer[] indices = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            indices[i] = i;
+        }
+        
+        // Sort the indices based on heights in descending order
+        // Using anonymous inner class for Comparator (Java 7 compatible)
+        Arrays.sort(indices, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer i1, Integer i2) {
+                // Compare heights: heights[i2] - heights[i1] for descending order
+                // Using Integer.compare to avoid potential overflow (though constraints say heights are positive)
+                return Integer.compare(heights[i2], heights[i1]);
+            }
+        });
+        
+        // Build the result array using the sorted indices
+        String[] result = new String[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = names[indices[i]];
+        }
+        
+        return result;
+    }
+}
