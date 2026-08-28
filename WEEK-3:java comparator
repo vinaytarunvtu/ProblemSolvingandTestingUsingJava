@@ -1,0 +1,27 @@
+
+import java.util.*;
+
+class Checker implements Comparator<Player> {
+    @Override
+    public int compare(Player a, Player b) {
+        // Primary condition: Sort by score in decreasing order
+        if (a.score != b.score) {
+            return b.score - a.score;
+        }
+        
+        // Secondary condition: If scores are equal, sort by name alphabetically (increasing)
+        return a.name.compareTo(b.name);
+    }
+}
+
+// The Player class is usually provided by the platform, 
+// but included here for completeness if you need to run it locally.
+class Player {
+    String name;
+    int score;
+    
+    Player(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+}
