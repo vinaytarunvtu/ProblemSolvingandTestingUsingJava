@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Solution {
+    public String largestNumber(int[] nums) {
+        // Convert int array to String array
+        String[] strNums = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            strNums[i] = String.valueOf(nums[i]);
+        }
+
+        // Custom comparator using anonymous inner class (Java 7 compatible)
+        Arrays.sort(strNums, new Comparator<String>() {
+            @Override
+            public int compare(String a, String b) {
+                String order1 = a + b;
+                String order2 = b + a;
+                // Compare in reverse order to get descending result
+                return order2.compareTo(order1);
+            }
+        });
+
+        // If the largest number is "0", the whole result is "0"
+        if (strNums[0].equals("0")) {
+            return "0";
+        }
+
+        // Concatenate all strings
+        StringBuilder sb = new StringBuilder();
+        for (String s : strNums) {
+            sb.append(s);
+        }
+
+        return sb.toString();
+    }
+}
