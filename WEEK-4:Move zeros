@@ -1,0 +1,17 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int left = 0; // Pointer for the position to place the next non-zero element
+
+        // First pass: move all non-zero elements to the front
+        for (int right = 0; right < nums.length; right++) {
+            if (nums[right] != 0) {
+                nums[left++] = nums[right];
+            }
+        }
+
+        // Second pass: fill the remaining positions with zeros
+        while (left < nums.length) {
+            nums[left++] = 0;
+        }
+    }
+}
