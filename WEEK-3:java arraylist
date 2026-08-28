@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Creating an ArrayList of Strings
+        List<String> fruits = new ArrayList<>();
+
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        // Printing the list
+        System.out.println("Fruits list: " + fruits);
+
+        // Accessing an element
+        System.out.println("First fruit: " + fruits.get(0));
+
+        // Removing an element
+        fruits.remove("Banana");
+        System.out.println("After removal: " + fruits);
+
+        // Iterating through the list
+        System.out.println("Iterating through the list:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        // Checking if an element exists
+        if (fruits.contains("Apple")) {
+            System.out.println("Apple is in the list.");
+        }
+    }
+}
