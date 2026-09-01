@@ -1,0 +1,28 @@
+public class Solution {
+    public int maxSubArray(int[] nums) {
+        // Initialize currentMax and globalMax with the first element
+        // This handles cases where the array might contain only negative numbers
+        int currentMax = nums[0];
+        int globalMax = nums[0];
+
+        // Start iterating from the second element (index 1)
+        for (int i = 1; i < nums.length; i++) {
+            // Kadane's Algorithm logic:
+            // The max sum at current position is either the current number itself
+            // or the current number added to the previous max sum.
+            // If the previous max sum was negative, it's better to start fresh.
+            if (currentMax < 0) {
+                currentMax = nums[i];
+            } else {
+                currentMax += nums[i];
+            }
+
+            // Update the global maximum if the current position's sum is larger
+            if (currentMax > globalMax) {
+                globalMax = currentMax;
+            }
+        }
+
+        return globalMax;
+    }
+}
