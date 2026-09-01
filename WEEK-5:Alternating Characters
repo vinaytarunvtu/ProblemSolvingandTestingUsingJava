@@ -1,0 +1,32 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+
+    /*
+     * Complete the 'alternatingCharacters' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static int alternatingCharacters(String s) {
+        int deletions = 0;
+        
+        // Iterate through the string starting from the second character
+        for (int i = 1; i < s.length(); i++) {
+            // If current character matches the previous one, increment deletions
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                deletions++;
+            }
+        }
+        
+        return deletions;
+    }
+
+}
