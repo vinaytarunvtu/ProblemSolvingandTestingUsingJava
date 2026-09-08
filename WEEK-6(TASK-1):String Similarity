@@ -1,0 +1,35 @@
+class Result {
+    /*
+     * Complete the 'stringSimilarity' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts STRING s as parameter.
+     */
+    public static long stringSimilarity(String s) {
+        int n = s.length();
+        int[] z = new int[n];
+        z[0] = n;                 // similarity of S with itself
+
+        long sum = n;             // start with z[0]
+        int l = 0, r = 0;         // current Z-box [l, r]
+
+        for (int i = 1; i < n; i++) {
+            // Seed z[i] from the mirror inside the box, if i is inside it
+            if (i <= r) {
+                z[i] = Math.min(r - i + 1, z[i - l]);
+            }
+            // Extend the match naively beyond the box
+            while (i + z[i] < n
+                    && s.charAt(z[i]) == s.charAt(i + z[i])) {
+                z[i]++;
+            }
+            // Update the box if we pushed the right edge further
+            if (i + z[i] - 1 > r) {
+                l = i;
+                r = i + z[i] - 1;
+            }
+            sum += z[i];
+        }
+        return sum;
+    }
+}
